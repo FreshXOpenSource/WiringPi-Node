@@ -33,7 +33,11 @@
         '-lwiringPiDev'
       ],
       'cflags': [
-        '-Wall'
+        '-Wall',
+        '-I../WiringPi/wiringPi',
+        '-I../WiringPi/devLib',
+        '-L../WiringPi/devLib',
+        '-L../WiringPi/wiringPi'
       ]
     }
   ]
