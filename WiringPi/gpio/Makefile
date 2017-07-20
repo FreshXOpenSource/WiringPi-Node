@@ -52,8 +52,12 @@ version.h:	../VERSION
 	$Q echo Need to run newVersion above.
 
 gpio:	$(OBJ)
-	$Q echo [Link]
+	$Q echo "[Link (Dynamic)]"
 	$Q $(CC) -o $@ $(OBJ) $(LDFLAGS) $(LIBS)
+
+gpio-static: $(OBJ)
+	$Q echo "[Link (Static)]"
+	$Q $(CC) -static -o gpio $(OBJ) ../wiringPi/libwiringPi.a ../devLib/libwiringPiDev.a -lpthread
 
 .c.o:
 	$Q echo [Compile] $<

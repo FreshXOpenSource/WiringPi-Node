@@ -36,7 +36,7 @@ DYNAMIC=libwiringPiDev.so.$(VERSION)
 
 #DEBUG	= -g -O0
 DEBUG	= -O2
-CC	= gcc
+CC	?= gcc
 #INCLUDE	= -I.
 INCLUDE	= -I. -I$(PWD)/../wiringPi
 DEFS	= -D_GNU_SOURCE
@@ -70,6 +70,7 @@ $(STATIC):	$(OBJ)
 $(DYNAMIC):	$(OBJ)
 	$Q echo "[Link (Dynamic)]"
 	$Q $(CC) -shared -Wl,-soname,libwiringPiDev.so$(WIRINGPI_SONAME_SUFFIX) -o libwiringPiDev.so.$(VERSION) -lpthread $(OBJ)
+	$Q ln -sf libwiringPiDev.so.$(VERSION) libwiringPiDev.so
 
 .c.o:
 	$Q echo [Compile] $<
@@ -94,7 +95,7 @@ install:	$(DYNAMIC)
 	$Q echo "[Install Dynamic Lib]"
 	$Q install -m 0755 -d						$(DESTDIR)$(PREFIX)/lib
 	$Q install -m 0755 libwiringPiDev.so.$(VERSION)			$(DESTDIR)$(PREFIX)/lib/libwiringPiDev.so.$(VERSION)
-	$Q ln -sf $(DESTDIR)$(PREFIX)/lib/libwiringPiDev.so.$(VERSION)	$(DESTDIR)/lib/libwiringPiDev.so
+	$Q ln -sf libwiringPiDev.so.$(VERSION)				$(DESTDIR)$(PREFIX)/lib/libwiringPiDev.so
 	$Q $(LDCONFIG)
 
 .PHONY:	install-static
