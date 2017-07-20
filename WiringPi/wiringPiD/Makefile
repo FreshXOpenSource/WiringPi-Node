@@ -45,7 +45,9 @@ SRC	=	wiringpid.c network.c runRemote.c daemonise.c
 
 OBJ	=	$(SRC:.c=.o)
 
-all:		wiringpid
+all:
+	@echo NOT BUILDING
+#wiringpid
 
 wiringpid:	$(OBJ)
 	$Q echo [Link]
