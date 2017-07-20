@@ -1,6 +1,4 @@
-#!/bin/bash
-
-exit 0
+#!/bin/bash -x
 
 check_make_ok() {
   if [ $? != 0 ]; then
