@@ -61,7 +61,7 @@ cd ../../
 echo "done."
 
 echo -n "Making WiringPi-node ... "
-env CC=$CC CXX=$CXX CXX.target=$CXX node-gyp rebuild 2>&1 | tee -a ./install.log
+env CC=$CC CXX=$CXX CXX.target=$CXX node-gyp rebuild --verbose 2>&1 | tee -a ./install.log
 check_make_ok "WiringPi-node" 1
 echo "done."
 
