@@ -61,4 +61,6 @@ node-gyp rebuild 2>&1 | tee -a ./install.log
 check_make_ok "WiringPi-node" 1
 echo "done."
 
+make clean
+
 echo "Enjoy !"
