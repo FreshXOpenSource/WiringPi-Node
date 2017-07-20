@@ -41,7 +41,7 @@ echo "done."
 
 cd ./WiringPi/gpio/
 echo -n "Unistalling gpio utility ... "
-sudo make uninstall >> ../../install.log 2>&1
+make uninstall >> ../../install.log 2>&1
 echo "done."
 
 echo -n "Making gpio utility ... "
@@ -51,7 +51,7 @@ check_make_ok "gpio utility" 0
 echo "done."
 
 echo -n "Installing gpio utility ... "
-sudo make install >> ../../install.log 2>&1
+make install >> ../../install.log 2>&1
 check_make_ok "gpio utility" 0
 cd ../../
 echo "done."
