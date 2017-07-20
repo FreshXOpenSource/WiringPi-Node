@@ -30,7 +30,7 @@ export CXX
 echo -n "Making libWiringPi ... "
 cd ./WiringPi/wiringPi/
 make clean >> ../../install.log 2>&1
-make static >> ../../install.log 2>&1
+env CC=$CC CXX=$CXX make static >> ../../install.log 2>&1
 check_make_ok "libWiringPi" 1
 cd ../../
 echo "done."
@@ -38,7 +38,7 @@ echo "done."
 cd ./WiringPi/devLib/
 echo -n "Making devLib ..."
 make clean >> ../../install.log 2>&1
-make static >> ../../install.log 2>&1
+env CC=$CC CXX=$CXX make static >> ../../install.log 2>&1
 check_make_ok "devLib" 0
 cd ../../
 echo "done."
@@ -50,17 +50,15 @@ echo "done."
 
 echo -n "Making gpio utility ... "
 make clean >> ../../install.log 2>&1
-make >> ../../install.log 2>&1
+env CC=$CC CXX=$CXX make >> ../../install.log 2>&1
 check_make_ok "gpio utility" 0
 echo "done."
 
 echo -n "Installing gpio utility ... "
-make install >> ../../install.log 2>&1
+env CC=$CC CXX=$CXX make install >> ../../install.log 2>&1
 check_make_ok "gpio utility" 0
 cd ../../
 echo "done."
-
-make clean
 
 echo -n "Making WiringPi-node ... "
 env CC=$CC CXX=$CXX CXX.target=$CXX node-gyp rebuild 2>&1 | tee -a ./install.log
