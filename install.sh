@@ -65,5 +65,6 @@ env CC=$CC CXX=$CXX CXX.target=$CXX node-gyp rebuild --verbose 2>&1 | tee -a ./i
 check_make_ok "WiringPi-node" 1
 echo "done."
 
+rm ${TARGET_DIR}/usr/lib/node_modules/node-blinkt/node_modules/wiringpi-node/WiringPi/wiringPiD/wiringpid
 
 echo "Enjoy !"
