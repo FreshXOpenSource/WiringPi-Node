@@ -23,6 +23,10 @@ check_make_ok() {
 
 rm ./install.log 2>/dev/null 1>&2
 
+echo $CC / $CXX
+export CC
+export CXX
+
 echo -n "Making libWiringPi ... "
 cd ./WiringPi/wiringPi/
 make clean >> ../../install.log 2>&1
