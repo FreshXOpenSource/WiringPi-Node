@@ -65,6 +65,4 @@ env CC=$CC CXX=$CXX CXX.target=$CXX node-gyp rebuild --verbose 2>&1 | tee -a ./i
 check_make_ok "WiringPi-node" 1
 echo "done."
 
-find output/target/usr/ |grep "wiringPiD/wiringpid$" | xargs rm
-
 echo "Enjoy !"
